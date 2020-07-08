@@ -1,0 +1,82 @@
+/* * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+} */
+
+body {
+    display: flex;
+    font-family: sans-serif;
+    justify-content: center;
+}
+
+h1 {
+    margin-top: 0px;
+}
+
+.container {
+    background-color: rgb(0, 179, 255);
+    /* width: 500px;
+    height: 500px; */
+    margin: 25px;
+    padding: 25px;
+    border-radius: 20px;
+    color: black;
+    border: 5px solid rgb(0, 134, 192);
+}
+
+.title {
+    text-align: center;
+}
+
+.navigation {
+    margin-top: 5px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+    /* height: 30px; */
+}
+
+.reset {
+    cursor: pointer;
+}
+
+.reset:hover {
+    color: white;
+}
+
+.grid {
+    background-color: rgb(0, 134, 192);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 7px;
+    margin-top: 50px;
+}
+
+.cell {
+    height: 120px;
+    width: 120px;
+    background: rgb(0, 179, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* after tez dziala ale bez niczego nie */
+.X::before {
+    content: "×";
+    font-size: 120px;
+    color: black;
+}
+
+.O::before {
+    content: "○";
+    font-size: 120px;
+    color: white;
+    /* padding: 5px; */
+}
+
+.status span {
+    color: white;
+}

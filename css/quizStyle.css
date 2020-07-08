@@ -12,7 +12,12 @@ div.content h1 {
     text-transform: uppercase;
 }
 
-div.content #startButton {
+div.content h1 {
+    font: normal bold 200px/1 Arial;
+    text-transform: uppercase;
+}
+
+div.content #startButton, div.content #restartGame{
     font: normal bold 100px/1 Arial;
     padding: 0.3em 1.2em;
     border-style: solid;
@@ -49,7 +54,7 @@ background-color: red;
     justify-content: flex-start;
 }
 
-div.content div.quiz-content div.question {
+div.content div.quiz-content div.question, div.content p {
     font: normal bold 50px/1 Arial;
 }
 
