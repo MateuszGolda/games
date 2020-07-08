@@ -1,4 +1,5 @@
-let remainingTime = 59;
+let durationOfGame = 10;
+let remainingTime = 0;
 let timer;
 let playerPoints = 0;
 let questions;
@@ -22,6 +23,12 @@ let quizHtmlTemplate = `
             <button type="button" id="fourthAnswer">Fourth Answer</button>
         </div>
     </div>
+`;
+
+let endScreenHtml = `
+    <h1 class="endScreen">Good job!</h1>
+    <p></p>
+    <button type="button" id="restartGame">Restart</button>
 `;
 
 function overMouseColorChange(event, borderDefaultColor="green",
@@ -85,7 +92,6 @@ function addButtonsEventsListeners() {
     divContent.querySelectorAll("div.quiz-content div.answers button").forEach(
             button => {
         button.addEventListener("click", (event) => {
-            currentAnswer = event.target.value;
             validateCurrentAnswer(event.target);
             loadNextQuestion();
         });
@@ -112,6 +118,12 @@ function loadGameElements() {
 
 function handleTimeEnd() {
     clearInterval(timer);
+    deleteDivContentElements();
+    divContent.innerHTML = endScreenHtml;
+    divContent.querySelector("p").innerText = `Your score: ${playerPoints}`;
+    let button = divContent.querySelector("button");
+    button.onmouseover = button.onmouseout = overMouseColorChange;
+    button.onclick = startGame;
 }
 
 function countSecondDown() {
@@ -121,22 +133,24 @@ function countSecondDown() {
 }
 
 function setTimer() {
+    remainingTime = durationOfGame + 1;
+    countSecondDown();
     timer = setInterval(countSecondDown, 1000)
 }
 
-function deleteStartScreenElements() {
-    document.querySelectorAll("div.content *").forEach(element => element.remove());
+function deleteDivContentElements() {
+    divContent.querySelectorAll("*").forEach(element => element.remove());
 }
 
 
 function startGame() {
-    deleteStartScreenElements();
-    setTimer();
+    deleteDivContentElements();
     loadGameElements();
+    setTimer();
 }
 
 function main() {
-    let startButton = document.getElementById("startButton")
+    let startButton = document.getElementById("startButton");
     startButton.onmouseover = startButton.onmouseout = overMouseColorChange;
     startButton.addEventListener("click", startGame);
 }
