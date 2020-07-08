@@ -76,3 +76,6 @@ h1 {
     /* padding: 5px; */
 }
 
+.status span {
+    color: white;
+}
