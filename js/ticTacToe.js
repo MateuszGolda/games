@@ -54,16 +54,21 @@ const checkGameStatus = () => {
                middleRight && bottomLeft && bottomMiddle && bottomRight) {
         isGameLive = false;
         status.innerHTML = "TIED!";
+    } else {
+        isNextX = !isNextX;
+        isNextX ? status.innerHTML = `Current turn: ${xSymbol}`: status.innerHTML = `Current turn ${oSymbol}`;
     }
-    // } else {
-    //     isNextX = !isNextX;
-    //     isNextX ? status.innerHTML = `Current turn: ${xSymbol}`: status.innerHTML = `Current turn ${oSymbol}`;
-    // }
 }
 
 
-const handleReset = (e) => {
-    console.log(e);
+const resetButton = (e) => {
+    isNextX = true;
+    winner = null;
+    status.innerHTML = `Current turn:  ${xSymbol}`;
+    for (let cell of cells) {
+        cell.classList.remove("X");
+        cell.classList.remove("O");
+    }
 }
 
 // const handleCellClick = (e) => {
@@ -72,10 +77,10 @@ function handleCellClick(e) {
     if (e.target.classList[2] === "X" || e.target.classList[2] === "O") {
         return;
     }
-    isNextX ? (e.target.classList.add("X"), checkGameStatus(), isNextX = !isNextX) : (e.target.classList.add("O"), checkGameStatus(), isNextX = !isNextX);
+    isNextX ? (e.target.classList.add("X"), checkGameStatus()) : (e.target.classList.add("O"), checkGameStatus());
 }
 
-reset.addEventListener("click", handleReset);
+reset.addEventListener("click", resetButton);
 
 for (const cell of cells) {
     cell.addEventListener('click', handleCellClick);
