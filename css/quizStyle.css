@@ -1,0 +1,68 @@
+div.content {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+div.content h1 {
+    font: normal bold 200px/1 Arial;
+    text-transform: uppercase;
+}
+
+div.content #startButton {
+    font: normal bold 100px/1 Arial;
+    padding: 0.3em 1.2em;
+    border-style: solid;
+    border-color: green;
+    border-width: 0.2em;
+    background-color: #d9d9d9;
+    border-radius: 2em;
+}
+
+div.content div.timer {
+    font: normal bold 10vh/1 Arial;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-color: green;
+    border-radius: 50%;
+    width: 15vh;
+    height: 15vh;
+}
+
+div.content div.quiz-content {
+background-color: red;
+    align-self: flex-start
+    margin: 0px;
+    width: max-content;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+div.content div.quiz-content div.question {
+    font: normal bold 50px/1 Arial;
+}
+
+div.content div.quiz-content div.answers {
+    display: flex;
+    flex-direction: column;
+}
+
+div.content div.quiz-content div.answers button {
+    font: normal bold 50px/1 Arial;
+    margin: 0.2em 0.5em;
+    padding: 0.5em;
+    border-radius: 1em;
+    border: solid;
+
+}
