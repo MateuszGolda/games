@@ -8,6 +8,7 @@ body {
     display: flex;
     font-family: sans-serif;
     justify-content: center;
+    background-color: black;
 }
 
 h1 {
@@ -64,19 +65,23 @@ h1 {
 }
 
 /* after tez dziala ale bez niczego nie */
-.X::before {
+.X::after {
     content: "×";
     font-size: 120px;
     color: black;
 }
 
-.O::before {
+.O::after {
     content: "○";
     font-size: 120px;
     color: white;
     /* padding: 5px; */
 }
 
-.status span {
-    color: white;
+.turn span {
+    color: rgba(255, 0, 0, 0.768);
+}
+
+.win::after {
+    color: rgba(255, 0, 0, 0.768);
 }
