@@ -1,0 +1,95 @@
+#hangmanPic {
+    width: 200px;
+    height: 200px;
+}
+
+#el1, #el2, #el3 {
+    background: #724949;
+}
+
+#el4, #el5, #el6, #el7, #el8, #el9, #el10, #el11 {
+    background: #ffff;
+}
+
+#el1 {
+    width: 20px;
+    height: 200px;
+    position: absolute;
+    top: 160px;
+    left: 220px;
+}
+
+#el2 {
+    width: 100px;
+    height: 20px;
+    position: absolute;
+    top: 160px;
+    left: 220px;
+}
+
+#el3 {
+    width: 20px;
+    height: 40px;
+    position: absolute;
+    top: 160px;
+    left: 320px;
+}
+
+#el4 {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 190px;
+    left: 305px;
+    border-radius: 50%;
+}
+
+#el5 {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 240px;
+    left: 305px;
+}
+
+#el6 {
+    width: 20px;
+    height: 50px;
+    position: absolute;
+    top: 290px;
+    left: 305px;
+}
+
+#el7 {
+    width: 20px;
+    height: 50px;
+    position: absolute;
+    top: 290px;
+    left: 335px;
+}
+
+#el8 {
+    width: 20px;
+    height: 50px;
+    position: absolute;
+    top: 240px;
+    left: 284px;
+}
+
+#el9 {
+    width: 20px;
+    height: 50px;
+    position: absolute;
+    top: 240px;
+    left: 356px;
+}
+
+.container {
+    height: 500px;
+    margin: 100px auto;
+    width: 500px;
+}
+
+.active {
+    background-color: red;
+}
