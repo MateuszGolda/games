@@ -1,7 +1,7 @@
 const programming_languages = [
     "c",
-    "cplusplus",
-    "chash",
+    "c++",
+    "c#",
     "erlang",
     "go",
     "haskell",
@@ -31,7 +31,7 @@ function randomWord() {
 }
 
 function generateButtons() {
-    document.getElementById('keyboard').innerHTML = 'abcdefghijklmnopqrstuvwxyz'.split('').map(letter =>
+    document.getElementById('keyboard').innerHTML = 'abcdefghijklmnopqrstuvwxyz+#'.split('').map(letter =>
         `
       <button
         class="btn btn-lg btn-primary m-2"
@@ -59,7 +59,7 @@ function handleGuess(chosenLetter) {
 }
 
 function updateHangmanPicture() {
-    document.getElementById('el' + (mistakes + 3)).style.backgroundColor = "black";
+    document.getElementById('el' + (mistakes + 3)).style.display = "grid";
 }
 
 function checkIfGameWon() {
@@ -89,7 +89,7 @@ function reset() {
     mistakes = 0;
     guessed = [];
     for (let i = 4; i < 10; i++) {
-        document.getElementById('el' + (mistakes + i)).style.backgroundColor = "white";
+        document.getElementById('el' + (mistakes + i)).style.display = "none";
     }
 
     randomWord();
@@ -98,8 +98,12 @@ function reset() {
     generateButtons();
 }
 
-document.getElementById('maxWrong').innerHTML = maxWrong + '';
+main();
 
-randomWord();
-generateButtons();
-guessedWord();
+function main() {
+    document.getElementById('maxWrong').innerHTML = maxWrong + '';
+    document.getElementsByClassName("btn btn-info")[0].addEventListener("click", reset);
+    randomWord();
+    generateButtons();
+    guessedWord();
+}

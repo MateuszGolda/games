@@ -1,95 +1,89 @@
+body {
+    background: #3d3d3d;
+}
+
 #hangmanPic {
+    display: grid;
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
     width: 200px;
     height: 200px;
 }
 
 #el1, #el2, #el3 {
-    background: #724949;
+    background: #805f59;
 }
 
 #el4, #el5, #el6, #el7, #el8, #el9, #el10, #el11 {
-    background: #ffff;
+    background: #dcc5bb;
+    display: none;
 }
 
 #el1 {
-    width: 20px;
-    height: 200px;
-    position: absolute;
-    top: 179px;
-    left: 220px;
+    grid-row-start: 1;
+    grid-row-end: -1;
 }
 
 #el2 {
-    width: 100px;
-    height: 20px;
-    position: absolute;
-    top: 179px;
-    left: 220px;
+    grid-column-start: 2;
+    grid-column-end: 7;
 }
 
 #el3 {
-    width: 20px;
-    height: 40px;
-    position: absolute;
-    top: 179px;
-    left: 320px;
+    grid-column-start: 6;
+    grid-row-start: 2;
 }
 
 #el4 {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 209px;
-    left: 305px;
-    border-radius: 50%;
+    grid-column-start: 5;
+    grid-column-end: span 3;
+    grid-row-start: 3;
+    grid-row-end: span 3;
+    shape-outside: circle();
+    clip-path: circle();
 }
 
 #el5 {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 259px;
-    left: 305px;
+    grid-column-start: 5;
+    grid-column-end: span 3;
+    grid-row-start: 6;
+    grid-row-end: span 2;
 }
 
 #el6 {
-    width: 20px;
-    height: 50px;
-    position: absolute;
-    top: 309px;
-    left: 305px;
+    grid-column-start: 4;
+    grid-row-start: 6;
+    grid-row-end: span 2;
 }
 
 #el7 {
-    width: 20px;
-    height: 50px;
-    position: absolute;
-    top: 309px;
-    left: 335px;
+    grid-column-start: 8;
+    grid-row-start: 6;
+    grid-row-end: span 2;
 }
 
 #el8 {
-    width: 20px;
-    height: 50px;
-    position: absolute;
-    top: 259px;
-    left: 284px;
+    grid-column-start: 5;
+    grid-row-start: 7;
+    grid-row-end: span 3;
 }
 
 #el9 {
-    width: 20px;
-    height: 50px;
-    position: absolute;
-    top: 259px;
-    left: 356px;
+    grid-column-start: 7;
+    grid-row-start: 7;
+    grid-row-end: span 3;
 }
 
 .container {
-    height: 500px;
-    margin: 100px auto;
-    width: 500px;
+    max-width: 700px;
+    color: white;
 }
 
-.active {
-    background-color: red;
+#games-link {
+    display: inline;
+    padding: 5px;
+    border: 5px;
+    margin: 5px;
 }
