@@ -1,5 +1,24 @@
 {
-  "allQuestions":[{"question":"How many legs does cat have?","answer":"4","falseAnswer":["2","1","3"]},
+  "allQuestions":[
+    {"question":"How many legs does cat have?","answer":"4","falseAnswer":["2","1","3"]},
     {"question":"What color is bee?","answer":"yellow-black",
         "falseAnswer":["yellow-white","brown-yellow","green-yellow"]},
-    {"question":"When has Java released?","answer":"1995","falseAnswer":["1987","2003","2016"]}]}
+    {"question":"When has Java released?","answer":"1995","falseAnswer":["1987","2003","2016"]},
+    {"question": "What is the weight of the Statue of Liberty?", "answer": "225 tons",
+        "falseAnswer": ["230 tons", "240 tons", "245 tons"]},
+    {"question": "What is the capital of Australia?", "answer": "Canberra",
+        "falseAnswer": ["Melbourne", "Brisbane", "Perth"]},
+    {"question": "When was the first computer invented?", "answer": "1943",
+        "falseAnswer": ["1833", "1945", "1938"]},
+    {"question": "What is the most common written word in English", "answer": "the",
+        "falseAnswer": ["be", "to", "of"]},
+    {"question": "What year was the first car invented?", "answer": "1885",
+        "falseAnswer": ["1884", "1890", "1888"]},
+    {"question": "What are the colours of the five olympic rings?",
+        "answer": "blue, yellow, black, green, red",
+        "falseAnswer": ["blue, yellow, white, green, red",
+        "blue, orange, black, green, magenta", "purple, yellow, black, navy, red"]},
+    {"question": "What is the name of the first computer virus?",
+      "answer": "Creeper System", "falseAnswer": ["Psycho System", "Cipher Breaker", "BBN"]}
+  ]
+}
