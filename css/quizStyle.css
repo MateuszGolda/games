@@ -17,8 +17,9 @@ div.content h1 {
     text-transform: uppercase;
 }
 
-div.content #startButton, div.content #restartGame{
-    font: normal bold 100px/1 Arial;
+div.content #startButton, div.content #restartGame, div.content #goMainMenu {
+    font: normal bold 50px/1 Arial;
+    width: 8em;
     padding: 0.3em 1.2em;
     border-style: solid;
     border-color: green;
@@ -46,7 +47,7 @@ div.content div.quiz-content {
 background-color: red;
     align-self: flex-start
     margin: 0px;
-    width: max-content;
+    width: 80vw;
     height: max-content;
     display: flex;
     flex-direction: column;
@@ -55,10 +56,13 @@ background-color: red;
 }
 
 div.content div.quiz-content div.question, div.content p {
+
     font: normal bold 50px/1 Arial;
 }
 
 div.content div.quiz-content div.answers {
+    background-color: yellow;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }

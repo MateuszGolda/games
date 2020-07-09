@@ -29,12 +29,19 @@ let endScreenHtml = `
     <h1 class="endScreen">Good job!</h1>
     <p></p>
     <button type="button" id="restartGame">Restart</button>
+    <button type="button" id="goMainMenu">Go back</button>
 `;
 
-function overMouseColorChange(event, borderDefaultColor="green",
+function setColorChangeOnButton(button, borderDefaultColor="green",
             borderActiveColor="red", backgroundDefaultColor="#d9d9d9",
             backgroundActiveColor="#1aff1a") {
-    let button = event.target;
+    button.onmouseover = button.onmouseout =
+            () => overMouseColorChange(button, borderDefaultColor,
+            borderActiveColor, backgroundDefaultColor, backgroundActiveColor);
+}
+
+function overMouseColorChange(button, borderDefaultColor,
+            borderActiveColor, backgroundDefaultColor, backgroundActiveColor) {
     if (button.classList.toggle("active")) {
         button.style.borderColor=borderActiveColor;
         button.style.backgroundColor=backgroundActiveColor;
@@ -45,11 +52,14 @@ function overMouseColorChange(event, borderDefaultColor="green",
 }
 
 function loadQuestionsFromFile() {
-    // TODO load data from file
-    questions = [{question:"How many legs does a horse have?", answer:"4", falseAnswer:["2", "1", "3"]},
-            {question:"What color is a bumble bee?", answer:"yellow-black",
-                    falseAnswer:["yellow-white", "brown-yellow", "green-yellow"]},
-            {question:"When was Java created?", answer:"1995", falseAnswer:["1987", "2003", "2016"]}];
+    let http = new XMLHttpRequest();
+    http.open("GET", "data/quizQuestions.json", false);
+    http.send();
+    if(http.readyState === 4 && http.status === 200) {
+        questions = (JSON.parse(http.response).allQuestions);
+    } else {
+        alert("Content has not been loaded... Please refresh the page!")
+    }
 }
 
 function validateCurrentAnswer(element) {
@@ -95,8 +105,7 @@ function addButtonsEventsListeners() {
             validateCurrentAnswer(event.target);
             loadNextQuestion();
         });
-        button.onmouseover = button.onmouseout = () => overMouseColorChange(event,
-                "black", "black", "#ecd9c6");
+        setColorChangeOnButton(button, "black", "black", "#ecd9c6");
     });
 }
 
@@ -116,14 +125,20 @@ function loadGameElements() {
     loadNextQuestion();
 }
 
+function setProperButtonsEvents(startGameButton, goBackButton) {
+    setColorChangeOnButton(startGameButton);
+    startGameButton.onclick = startGame;
+    setColorChangeOnButton(goBackButton);
+    goBackButton.onclick = () => parent.location="index.html";
+}
+
 function handleTimeEnd() {
     clearInterval(timer);
     deleteDivContentElements();
     divContent.innerHTML = endScreenHtml;
     divContent.querySelector("p").innerText = `Your score: ${playerPoints}`;
-    let button = divContent.querySelector("button");
-    button.onmouseover = button.onmouseout = overMouseColorChange;
-    button.onclick = startGame;
+    setProperButtonsEvents(divContent.querySelector("button#restartGame"),
+            divContent.querySelector("button#goMainMenu"));
 }
 
 function countSecondDown() {
@@ -150,9 +165,8 @@ function startGame() {
 }
 
 function main() {
-    let startButton = document.getElementById("startButton");
-    startButton.onmouseover = startButton.onmouseout = overMouseColorChange;
-    startButton.addEventListener("click", startGame);
+    setProperButtonsEvents(divContent.querySelector("button#startButton"),
+                divContent.querySelector("button#goMainMenu"));
 }
 
 main();
