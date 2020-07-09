@@ -1,6 +1,7 @@
 const status = document.querySelector(".turn");
 const reset = document.querySelector(".reset");
 const cells = document.querySelectorAll(".cell");
+const back = document.querySelector(".back");
 
 const xSymbol = "×";
 const oSymbol = "○";
@@ -9,19 +10,25 @@ let isGameLive = true;
 let isNextX = true;
 let winner = null;
 
-// const letterToSymbol = (letter) => letter === "X" ? xSymbol : oSymbol;
+reset.addEventListener("click", resetButton);
+
+
+for (const cell of cells) {
+    cell.addEventListener('click', cellClick);
+}
+
 function letterToSymbol(letter) {
     return letter === "X" ? xSymbol : oSymbol;
 }
 
-const handleWin = (letter) => {
+function handleWin (letter) {
     isGameLive = false;
     winner = letter;
     winner === "X" ? status.innerHTML = `<span>${letterToSymbol(winner)} is winner!</span>`: 
                      status.innerHTML = `<span>${letterToSymbol(winner)} is winner!</span>`;
 }
 
-const checkGameStatus = () => {
+function checkGameStatus() {
     const topLeft = cells[0].classList[1];
     const topMiddle = cells[1].classList[1];
     const topRight = cells[2].classList[1];
@@ -34,28 +41,28 @@ const checkGameStatus = () => {
 
     if (topLeft && topLeft === topMiddle && topLeft === topRight) {   
         handleWin(topLeft);
-        topHorizontal();
+        addWin(0, 1, 2);
     } else if (middleLeft && middleLeft === middleMiddle && middleLeft === middleRight) {
         handleWin(middleLeft);
-        middleHorizontal();
+        addWin(3, 4, 5);
     } else if (bottomLeft && bottomLeft === bottomMiddle && bottomLeft === bottomRight) {
         handleWin(bottomLeft);
-        bottomHorizontal();
+        addWin(6, 7, 8);
     } else if (topLeft && topLeft === middleLeft && topLeft === bottomLeft) {
         handleWin(topLeft);
-        leftVertical();
+        addWin(0, 3, 6);
     } else if (topMiddle && topMiddle === middleMiddle && topMiddle === bottomMiddle) {
         handleWin(topMiddle);
-        middleVertical();
+        addWin(1, 4, 7);
     } else if (topRight && topRight === middleRight && topRight === bottomRight) {
         handleWin(topRight);
-        rightVertical();
+        addWin(2, 5, 8);
     } else if (topLeft && topLeft === middleMiddle && topLeft === bottomRight) {
         handleWin(topLeft);
-        diagonalFromTopLeft();
+        addWin(0, 4, 8);
     } else if (topRight && topRight === middleMiddle && topRight === bottomLeft) {
         handleWin(topRight);
-        diagonalFromTopRight();
+        addWin(2, 4, 6);
     } else if (topLeft && topMiddle && topRight && middleLeft && middleMiddle &&
                middleRight && bottomLeft && bottomMiddle && bottomRight) {
         isGameLive = false;
@@ -66,7 +73,7 @@ const checkGameStatus = () => {
     }
 }
 
-const resetButton = (e) => {
+function resetButton(e) {
     isGameLive = true;
     isNextX = true;
     winner = null;
@@ -84,59 +91,8 @@ function cellClick(e) {
         return;
     }
     isNextX ? (e.target.classList.add("X"), checkGameStatus()) : (e.target.classList.add("O"), checkGameStatus());
-    console.log(isGameLive);
 }
 
-reset.addEventListener("click", resetButton);
-
-for (const cell of cells) {
-    cell.addEventListener('click', cellClick);
-}
-
-function topHorizontal() {
-    cells[0].classList.add("win");
-    cells[1].classList.add("win");
-    cells[2].classList.add("win");
-}
-
-function middleHorizontal() {
-    cells[3].classList.add("win");
-    cells[4].classList.add("win");
-    cells[5].classList.add("win");
-}
-
-function bottomHorizontal() {
-    cells[6].classList.add("win");
-    cells[7].classList.add("win");
-    cells[8].classList.add("win");
-}
-
-function leftVertical() {
-    cells[0].classList.add("win");
-    cells[3].classList.add("win");
-    cells[6].classList.add("win");
-}
-
-function middleVertical() {
-    cells[1].classList.add("win");
-    cells[4].classList.add("win");
-    cells[7].classList.add("win");
-}
-
-function rightVertical() {
-    cells[2].classList.add("win");
-    cells[5].classList.add("win");
-    cells[8].classList.add("win");
-}
-
-function diagonalFromTopLeft() {
-    cells[0].classList.add("win");
-    cells[4].classList.add("win");
-    cells[8].classList.add("win");
-}
-
-function diagonalFromTopRight() {
-    cells[2].classList.add("win");
-    cells[4].classList.add("win");
-    cells[6].classList.add("win");
+function addWin(...indexes) {
+    indexes.forEach(index => {cells[index].classList.add("win")});
 }
