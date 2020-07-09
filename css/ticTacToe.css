@@ -8,7 +8,7 @@ body {
     display: flex;
     font-family: sans-serif;
     justify-content: center;
-    background-color: black;
+    /* background-color: black; */
 }
 
 h1 {
