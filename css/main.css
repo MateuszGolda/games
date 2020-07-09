@@ -15,7 +15,7 @@ header {
 footer {
     text-align: center;
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
     width: 100%;
 }
 
@@ -25,4 +25,6 @@ footer {
     justify-content: space-around;
 }
 
-
+img {
+    height: 260px;
+}
