@@ -1,7 +1,7 @@
 let durationOfGame = 10;
 let remainingTime = 0;
 let timer;
-let playerPoints = 0;
+let playerPoints;
 let questions;
 let divContent = document.querySelector("div.content");
 
@@ -34,7 +34,7 @@ let endScreenHtml = `
 
 function setColorChangeOnButton(button, borderDefaultColor="green",
             borderActiveColor="red", backgroundDefaultColor="#d9d9d9",
-            backgroundActiveColor="#1aff1a") {
+            backgroundActiveColor="#40c300") {
     button.onmouseover = button.onmouseout =
             () => overMouseColorChange(button, borderDefaultColor,
             borderActiveColor, backgroundDefaultColor, backgroundActiveColor);
@@ -62,13 +62,15 @@ function loadQuestionsFromFile() {
     }
 }
 
-function validateCurrentAnswer(element) {
-    if (element.classList.contains("answer")) {
+function answerIsCorrect(answer) {
+    return answer.classList.contains("answer");
+}
+
+function validateCurrentAnswer(currentAnswerButton) {
+    if (answerIsCorrect(currentAnswerButton)) {
         playerPoints += 10;
-        alert("rightAnswer");
     } else {
         playerPoints -= 5;
-        alert("falseAnswer");
     }
 }
 
@@ -105,7 +107,7 @@ function addButtonsEventsListeners() {
             validateCurrentAnswer(event.target);
             loadNextQuestion();
         });
-        setColorChangeOnButton(button, "black", "black", "#ecd9c6");
+        setColorChangeOnButton(button, "black", "black", "#4eabc1");
     });
 }
 
@@ -159,6 +161,7 @@ function deleteDivContentElements() {
 
 
 function startGame() {
+    playerPoints = 0;
     deleteDivContentElements();
     loadGameElements();
     setTimer();

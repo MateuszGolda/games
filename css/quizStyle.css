@@ -1,6 +1,10 @@
 div.content {
-    width: 100vw;
-    height: 100vh;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    margin: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,17 +12,16 @@ div.content {
 }
 
 div.content h1 {
-    font: normal bold 200px/1 Arial;
+    font: normal bold 180px/1 Arial;
     text-transform: uppercase;
 }
 
-div.content h1 {
-    font: normal bold 200px/1 Arial;
-    text-transform: uppercase;
+div.content h1.endScreen {
+    font-size: 130px;
 }
 
 div.content #startButton, div.content #restartGame, div.content #goMainMenu {
-    font: normal bold 50px/1 Arial;
+    font: normal bold 40px/1 Arial;
     width: 8em;
     padding: 0.3em 1.2em;
     border-style: solid;
@@ -44,10 +47,9 @@ div.content div.timer {
 }
 
 div.content div.quiz-content {
-background-color: red;
-    align-self: flex-start
+    background-color: red;
     margin: 0px;
-    width: 80vw;
+    width: 70vw;
     height: max-content;
     display: flex;
     flex-direction: column;
@@ -56,8 +58,7 @@ background-color: red;
 }
 
 div.content div.quiz-content div.question, div.content p {
-
-    font: normal bold 50px/1 Arial;
+    font: normal bold 40px/1 Arial;
 }
 
 div.content div.quiz-content div.answers {
@@ -68,9 +69,10 @@ div.content div.quiz-content div.answers {
 }
 
 div.content div.quiz-content div.answers button {
+    background-color: #4eabc1;
     font: normal bold 50px/1 Arial;
     margin: 0.2em 0.5em;
-    padding: 0.5em;
+    padding: 0.4em;
     border-radius: 1em;
     border: solid;
 
