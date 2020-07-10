@@ -82,8 +82,14 @@ body {
 }
 
 #games-link {
+    background: #9e9e9e;
+    color: black;
     display: inline;
     padding: 5px;
     border: 5px;
     margin: 5px;
+}
+
+#games-link:hover {
+    color: white;
 }
